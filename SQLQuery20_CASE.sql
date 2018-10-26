@@ -1,0 +1,23 @@
+use students;
+select * from Student_Marks;
+
+
+-- QUERY TO FIND TOTAL MARKS AND RESULT
+SELECT SNO, SName, M1, M2, M3, (M1 + M2 + M3) AS Total_marks,
+(CASE
+	WHEN M1 < 35 OR M2 < 35 OR M3 < 35 THEN 'FAIL'
+	ELSE 'PASS'
+	END) Result FROM Student_Marks;
+
+
+-- QUERY TO FIND PERCENTAGE, TOTALMARKS AND GRADES
+SELECT SNO, SName, M1, M2, M3, (M1 + M2 + M3) AS Total_marks,
+(M1 + M2 + M3) / 3 AS Percentage,
+CASE
+WHEN M1 < 35 OR M2 < 35 OR M3 < 35 THEN 'FAIL'
+WHEN (M1 + M2 + M3) / 3 >= 70 THEN 'DISTINCTION'
+WHEN (M1 + M2 + M3) / 3 >= 60 THEN 'FIRST CLASS'
+WHEN (M1 + M2 + M3) / 3 >= 50 THEN 'SECOND CLASS'
+ELSE 'THIRD CLASS'
+END Grades
+FROM Student_Marks;

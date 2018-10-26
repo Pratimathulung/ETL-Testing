@@ -1,0 +1,45 @@
+
+
+USE EXERCISE_JOINS;
+CREATE TABLE ACCOUNT(
+AccountNo int,
+AccountHolderName varchar(50),
+AccountType varchar(50)
+);
+
+CREATE TABLE BALANCE(
+AccountNumber int,
+BalanceAmount int
+);
+
+INSERT INTO ACCOUNT VALUES(50001234, 'Priya', 'savings'),
+(50005896, 'Ganesh', 'savings'),
+(50002222, 'Siva', 'savings'),
+(50001111, 'Ravi', 'current'),
+(50005555, 'Krishna', 'current');
+
+
+INSERT INTO BALANCE VALUES(50001234, 100000),
+(50005444, 50000),
+(50002222, 2500000),
+(50003333, 28000),
+(50005555, 75000);
+
+
+SELECT * FROM ACCOUNT;
+
+SELECT * FROM BALANCE;
+
+-- WRITE A QUERY TO DISPLAY ALL SAVING ACCNT HOLDER NAMES WITH THE CURRENT BALANCE
+SELECT AccountHolderName FROM ACCOUNT A 
+JOIN BALANCE B ON A.AccountNo = B.AccountNumber
+where A.AccountType = 'current';
+
+-- WRITE A QUERY TO DISPLAY THE TOTAL BALANCE AMOUNT OF ALL CURRENT ACCOUNT HOLDERS
+SELECT SUM(B.BalanceAmount) FROM ACCOUNT A 
+JOIN BALANCE B ON A.AccountNo = B.AccountNumber
+where A.AccountType = 'current';
+
+
+
+

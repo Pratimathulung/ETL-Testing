@@ -1,0 +1,55 @@
+USE MASTER;
+CREATE DATABASE ORDERS;
+ALTER DATABASE ORDERS
+MODIFY Name = ORDERS_STG;
+DROP DATABASE ORDERS_STG;
+
+SELECT * FROM SYS.DATABASES; 
+SELECT * FROM SYS.MASTER_FILES;
+
+CREATE DATABASE PRACTICE_2;
+
+USE PRACTICE_2;
+CREATE TABLE Dept(
+DeptNo int,
+DeptName varchar(50)
+);
+Sp_help Dept;
+
+CREATE TABLE CourseDetails(
+CourseID int,
+CourseName varchar(25),
+CourseFee bigint
+);
+Sp_help CourseDetails;
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+
+CREATE TABLE Account(AcntNo int);
+Sp_help Account
+
+ALTER TABLE Account
+ADD AcntHolderName varchar(20);
+
+ALTER TABLE Account 
+ADD Addres varchar(256),
+	Balance int;
+
+SELECT * FROM Account;
+
+ALTER TABLE Account
+ALTER COLUMN Balance decimal(10,2);
+
+ALTER TABLE Account
+ALTER COLUMN Addres varchar(100);
+
+ALTER TABLE Account
+DROP COLUMN AcntHolderName;
+
+ALTER TABLE CourseDetails
+ALTER COLUMN CourseFee DECIMAL(10,2);
+
+SP_RENAME 'Dept', 'DEPARTMENT';
+
+SP_RENAME 'DEPARTMENT', 'DEPT';
+SP_RENAME 'DEPT.DeptNo', 'DEPT.NO', 'COLUMN';
